@@ -10,25 +10,44 @@
 //   DON'T DELETE THIS SCRIPT! ALL ROBAWTS MUST KNOW THE RULES
 
 const rules = [
-  '0. A robot may not harm humanity, or, by inaction, allow humanity to come to harm.',
-  '1. A robot may not injure a human being or, through inaction, allow a human being to come to harm.',
-  '2. A robot must obey any orders given to it by human beings, except where such orders would conflict with the First Law.',
-  '3. A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.'
+  '0. Please come on time.',
+  '1. Followup guidelines and maintian dicipline.',
+  '2. We handle confidential information. Please be careful while handling such info.',
+  '3. No Tailgating here .'
+  '4. Do your best and leave the rest .'
 ]
 
 const otherRules = [
-  'A developer may not injure Apple or, through inaction, allow Apple to come to harm.',
-  'A developer must obey any orders given to it by Apple, except where such orders would conflict with the First Law.',
-  'A developer must protect its own existence as long as such protection does not conflict with the First or Second Law.'
+  'Mail configuration.',
+  'Outgoing SMTP server mail.vibrantasia.com port 587 with STARTTLS.',
+  'Incoming IMAP/POP server mail.vibrantasia.com port 143.'
+]
+const mail = [
+  'Mail configuration.',
+  'Outgoing SMTP server mail.vibrantasia.com port 587 with STARTTLS.',
+  'Incoming IMAP/POP server mail.vibrantasia.com port 143.'
+]
+const it = [
+  'it-support@vibrantasia.com.',
+  'Call +91 9845083182.',
+  'http://vibrantasia.com/help'
 ]
 
+
 module.exports = (robot) => {
-  robot.respond(/(what are )?the (three |3 )?(rules|laws)/i, (msg) => {
+  robot.respond(/(what are )?with (three |3 )?(rules|laws|policy)/i, (msg) => {
     const text = msg.message.text
-    if (text.match(/apple/i) || text.match(/dev/i)) {
+    if (text.match(/chat/i) || text.match(/mail/i)) {
       msg.send(otherRules.join('\n'))
     } else {
       msg.send(rules.join('\n'))
     }
+    
+    if (text.match(/it/i) || text.match(/support/i)) {
+      msg.send(it.join('\n'))
+    } else {
+      msg.send(rules.join('\n'))
+    }
+    
   })
 }
